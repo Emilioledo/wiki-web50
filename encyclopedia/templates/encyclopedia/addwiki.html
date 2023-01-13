@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Encyclopedia
+{%endblock %}
+
+{% block body %}
+
+<body>
+  {% for msg in messages %}
+  {{msg}}
+  {% endfor %}
+  <form action="{% url 'addwiki' %}" method="post">
+    {% csrf_token %}
+    <div>
+      {{AddWikiForm.title}}
+    </div>
+    <div>
+      {{AddWikiForm.content}}
+    </div>
+    <input type="submit" value="Add entry">
+  </form>
+</body>
+{% endblock %}
